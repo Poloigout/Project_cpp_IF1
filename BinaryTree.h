@@ -6,7 +6,7 @@ class BinaryTree
 public:
 	void setDepth(int _depth);
 	void setNode(int level, int position, T value);
-	T getNode(int level, int position);
+	T getNode(int level, int position) const;
 	void display() const;
 	
 private:
