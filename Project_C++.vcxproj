@@ -126,10 +126,11 @@
     <ClCompile Include="AsianCallOption.cpp" />
     <ClCompile Include="AsianOption.cpp" />
     <ClCompile Include="AsianPutOption.cpp" />
-    <ClCompile Include="BinaryTree.cpp" />
     <ClCompile Include="BlackScholesPricer.cpp" />
     <ClCompile Include="CallOption.cpp" />
+    <ClCompile Include="CRRPricer.cpp" />
     <ClCompile Include="EuropeanVanillaOption.cpp" />
+    <ClCompile Include="MT.cpp" />
     <ClCompile Include="Option.cpp" />
     <ClCompile Include="Project_C++.cpp" />
     <ClCompile Include="PutOption.cpp" />
@@ -141,7 +142,9 @@
     <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="BlackScholesPricer.h" />
     <ClInclude Include="CallOption.h" />
+    <ClInclude Include="CRRPricer.h" />
     <ClInclude Include="EuropeanVanillaOption.h" />
+    <ClInclude Include="MT.h" />
     <ClInclude Include="Option.h" />
     <ClInclude Include="OptionType.h" />
     <ClInclude Include="PutOption.h" />

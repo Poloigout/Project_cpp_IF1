@@ -7,7 +7,7 @@ Option::Option(double e):_expiry(e){
 	}
 	
 }
-double Option::getExpiry() {
+double Option::getExpiry() const {
 	return _expiry;
 }
 

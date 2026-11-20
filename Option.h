@@ -5,7 +5,7 @@ private:
 	double _expiry;
 	
 public:
-	double getExpiry();
+	double getExpiry() const;
 	virtual double payoff(double) const= 0;
 	Option(double _expiry);
 	double payoffPath(const std::vector<double>& path) const;
