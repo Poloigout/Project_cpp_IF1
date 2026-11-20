@@ -132,9 +132,9 @@ int main()
 		sumN2 += z * z;
 	}
 	double meanN = sumN / M;
-	std::cout << "Moyenne uniforme   = " << sumU / M << " (attendu 0.5)\n";
-	std::cout << "Moyenne normale    = " << meanN << " (attendu 0)\n";
-	std::cout << "Variance normale   = " << sumN2 / M - meanN * meanN << " (attendu 1)\n";
+	std::cout << "Moyenne uniforme  = " << sumU / M << " (attendu 0.5)\n";
+	std::cout << "Moyenne normale   = " << meanN << " (attendu 0)\n";
+	std::cout << "Variance normale  = " << sumN2 / M - meanN * meanN << " (attendu 1)\n";
 
 	return 0;
 }
