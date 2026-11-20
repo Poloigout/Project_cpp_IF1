@@ -7,8 +7,8 @@ optionType CallOption::GetOptionType() const{
 }
 
 double CallOption::payoff(double z) const {
-	if (z >= GetStrike()) {
-		return z - GetStrike();
+	if (z >= _strike) {
+		return z - _strike;
 	}
 	return 0.0;
 }

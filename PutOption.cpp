@@ -8,8 +8,8 @@ optionType PutOption::GetOptionType() const {
 }
 
 double PutOption::payoff(double z) const {
-	if (z <= GetStrike()) {
-		return GetStrike() - z;
+	if (z <= _strike) {
+		return _strike - z;
 	}
 	return 0.0;
 }

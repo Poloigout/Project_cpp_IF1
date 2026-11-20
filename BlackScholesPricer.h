@@ -12,5 +12,5 @@ public:
 		double interest_rate, double volatility);
 	double operator()()const;
 	double delta() const;
-	friend class EuropeanVanillaOption;
+	
 };

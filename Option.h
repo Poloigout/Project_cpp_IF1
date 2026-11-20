@@ -1,10 +1,11 @@
 #pragma once
 class Option {
-private:
+protected:
 	double _expiry;
 	
 public:
-	double getExpiry();
+	double getExpiry() const;
 	virtual double payoff(double) const= 0;
-	Option(double _expiry);
+	Option(double);
+	virtual ~Option() = default;
 };
