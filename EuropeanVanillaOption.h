@@ -1,7 +1,7 @@
-#pragma once
-#include "Option.h"
-#include "OptionType.h"
-class EuropeanVanillaOption : public Option{
+#pragma once // évite que le fichier soit inclus deux fois
+#include "Option.h" // la classe mère doit être connue
+#include "OptionType.h" // pour pouvoir utiliser l'enum optionType
+class EuropeanVanillaOption : public Option{ // hérite d'Option
 protected:
 	double _strike;
 public:

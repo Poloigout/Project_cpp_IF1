@@ -1,5 +1,9 @@
+// BinaryTree.h
 #pragma once
 #include <vector>
+#include <iostream>
+#include <stdexcept>
+
 template <typename T>
 class BinaryTree
 {
@@ -10,24 +14,25 @@ public:
 	void display() const;
 
 private:
-	std::vector<vector<T>> _tree;
+	std::vector<std::vector<T>> _tree;
 	int _depth = 0;
 };
 
 template <typename T>
-void BinaryTree<T>::setDepth(int depth)
+void BinaryTree<T>::setDepth(int _depth)
 {
-	if (depth < 0)
+	if (_depth < 0)
 	{
 		throw std::invalid_argument("negative depth");
 	}
 
-	_depth = depth;
+	this->_depth = _depth;
 	_tree.resize(_depth + 1);
 	for (int i = 0; i <= _depth; ++i)
 	{
 		_tree[i].resize(i + 1);
 	}
+	_tree.shrink_to_fit();
 }
 
 template <typename T>
