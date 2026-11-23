@@ -62,6 +62,8 @@ int main() {
     std::cout << "Digital put  BS : " << bsDPut() << "   (attendu ~0.4189)\n";
     std::cout << "Somme           : " << bsDCall() + bsDPut() << "   (attendu e^-rT ~0.9512)\n";
 
+    std::cout << "Delta digital call : " << bsDCall.delta() << "   (attendu ~0.01876)\n";
+    std::cout << "Delta digital put  : " << bsDPut.delta() << "   (attendu ~-0.01876)\n";
 
     return 0;
 }

@@ -73,10 +73,56 @@ double BlackScholesPricer::operator()() const {
 }
 
 
+//delta mesure de combien el pricx de l'option bouge quand S bouge de 1. Elle fait donc intervenir la densité de la loi normale et sa fonction de repartition 
+
+
+static double normal_pdf(double x) {
+    // densité de la loi normale centrée réduite : φ(x) = e^(-x²/2) / √(2π)
+    return std::exp(-0.5 * x * x) / std::sqrt(2.0 * 3.14159265358979323846);
+}
+
+/*
 double BlackScholesPricer::delta()const {
 	double d1=(std::log(asset_price / _option->_strike) + (interest_rate + volatility * volatility / 2.0) * (_option->getExpiry())) / (volatility * std::sqrt(_option->getExpiry()));
 	if (_option->GetOptionType() == optionType::Call) {
 		return normal_cdf(d1);
 	}
 	return normal_cdf(d1) - 1.0;
+}
+*/
+
+
+double BlackScholesPricer::delta() const {
+    // 1. Récupérer K et T  (identique à operator())
+    double K, T;
+    if (_option != nullptr) {
+        K = _option->_strike;  // le strike de la vanille
+        T = _option->getExpiry();  // l'échéance de la vanille 
+
+    }
+    else {
+        K = _digitalOption->_strike;
+        T = _digitalOption->getExpiry();
+    }
+
+    // 2. Calculs communs
+    double d1 = (std::log(asset_price / K) + (interest_rate + volatility * volatility / 2) * T)/ (volatility * std::sqrt(T));
+    double d2 = d1 - volatility * std::sqrt(T);
+    double disc = std::exp(-interest_rate * T);   // facteur d'actualisation e^(-rT)    
+
+    // 3. La bonne formule
+    if (_option != nullptr) {
+        // VANILLE : call → N(d1)     put → N(d1) − 1
+        if (_option->GetOptionType() == optionType::Call)
+            return normal_cdf(d1); //Call
+        return normal_cdf(d1) - 1;
+    }
+    else {
+        
+         if (_digitalOption->GetOptionType() == optionType::Call)
+            return disc * normal_pdf(d2)/(asset_price*volatility*std::sqrt(T));// DIGITALE : call → disc · φ(d2) / (S · σ · √T)
+                        
+         return -disc * normal_pdf(d2) / (asset_price * volatility * std::sqrt(T));//digitale: put  → − disc · φ(d2) / (S · σ · √T)
+        
+    }
 }
