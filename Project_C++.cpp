@@ -4,7 +4,8 @@
 #include "PutOption.h"
 #include "BlackScholesPricer.h"
 #include "BlackScholesMCPricer.h"
-
+#include "EuropeanDigitalCallOption.h"
+#include "EuropeanDigitalPutOption.h"
 void test(Option* opt, EuropeanVanillaOption* vanilla, const std::string& name,
     double S, double r, double sigma) {
     BlackScholesPricer bs(vanilla, S, r, sigma);
@@ -48,5 +49,19 @@ int main() {
     catch (const std::exception& e) {
         std::cout << "Exception OK : " << e.what() << "\n";
     }
+
+    // === Tests options digitales ===
+    std::cout << "\n=== Digitales ===\n";
+    EuropeanDigitalCallOption dCall(1.0, 100.0);   // T = 1 an, K = 100
+    EuropeanDigitalPutOption  dPut(1.0, 100.0);
+
+    BlackScholesPricer bsDCall(&dCall, 100.0, 0.05, 0.2);   // S = 100, r = 5 %, sigma = 20 %
+    BlackScholesPricer bsDPut(&dPut, 100.0, 0.05, 0.2);
+
+    std::cout << "Digital call BS : " << bsDCall() << "   (attendu ~0.5323)\n";
+    std::cout << "Digital put  BS : " << bsDPut() << "   (attendu ~0.4189)\n";
+    std::cout << "Somme           : " << bsDCall() + bsDPut() << "   (attendu e^-rT ~0.9512)\n";
+
+
     return 0;
 }
