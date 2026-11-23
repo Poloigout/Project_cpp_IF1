@@ -136,6 +136,7 @@
     <ClCompile Include="CRRPricer.cpp" />
     <ClCompile Include="EuropeanDigitalCallOption.cpp" />
     <ClCompile Include="EuropeanDigitalOption.cpp" />
+    <ClCompile Include="EuropeanDigitalPutOption.cpp" />
     <ClCompile Include="EuropeanVanillaOption.cpp" />
     <ClCompile Include="MT.cpp" />
     <ClCompile Include="Option.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="CRRPricer.h" />
     <ClInclude Include="EuropeanDigitalCallOption.h" />
     <ClInclude Include="EuropeanDigitalOption.h" />
+    <ClInclude Include="EuropeanDigitalPutOption.h" />
     <ClInclude Include="EuropeanVanillaOption.h" />
     <ClInclude Include="MT.h" />
     <ClInclude Include="Option.h" />
