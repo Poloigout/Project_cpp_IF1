@@ -126,6 +126,7 @@
     <ClCompile Include="AsianCallOption.cpp" />
     <ClCompile Include="AsianOption.cpp" />
     <ClCompile Include="AsianPutOption.cpp" />
+    <ClCompile Include="BinaryTree.cpp" />
     <ClCompile Include="BlackScholesPricer.cpp" />
     <ClCompile Include="CallOption.cpp" />
     <ClCompile Include="CRRPricer.cpp" />
